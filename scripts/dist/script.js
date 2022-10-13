@@ -1,17 +1,6 @@
-//JUST AN EXAMPLE, PLEASE USE YOUR OWN PICTURE!
 var imageAddr = "resources/1.jpg";
 var downloadSize = 19996613; //bytes
 var showProgressMessage = function (msg) {
-    if (console) {
-        if (typeof msg == "string") {
-            console.log(msg);
-        }
-        else {
-            for (var i = 0; i < msg.length; i++) {
-                console.log(msg[i]);
-            }
-        }
-    }
     var oProgress = document.getElementById("progress");
     if (oProgress) {
         var actualHTML = (typeof msg == "string") ? msg : msg.join("<br />");
@@ -33,7 +22,7 @@ var measureConnectionSpeed = function () {
         showProgressMessage("Error Running Speed Test, Please Try Again Later...");
     };
     startTime = (new Date()).getTime();
-    var cacheBuster = "?nnn=" + startTime;
+    var cacheBuster = "?anticache=" + startTime;
     download.src = imageAddr + cacheBuster;
     var showResults = function () {
         var duration = (endTime - startTime) / 1000;

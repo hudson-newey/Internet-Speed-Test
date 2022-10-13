@@ -1,19 +1,8 @@
-//JUST AN EXAMPLE, PLEASE USE YOUR OWN PICTURE!
-let imageAddr = "resources/1.jpg"; 
-let downloadSize = 19996613; //bytes
+let imageAddr: string = "resources/1.jpg"; 
+let downloadSize: number = 19996613; //bytes
 
-let showProgressMessage = (msg) => {
-    if (console) {
-        if (typeof msg == "string") {
-            console.log(msg);
-        } else {
-            for (let i = 0; i < msg.length; i++) {
-                console.log(msg[i]);
-            }
-        }
-    }
-    
-    let oProgress = document.getElementById("progress");
+let showProgressMessage = (msg) => {    
+    let oProgress: HTMLElement | null = document.getElementById("progress");
     if (oProgress) {
         let actualHTML = (typeof msg == "string") ? msg : msg.join("<br />");
         oProgress.innerHTML = actualHTML;
@@ -27,7 +16,7 @@ let startSpeedTest = () => {
 
 let measureConnectionSpeed = () => {
     let startTime, endTime;
-    let download = new Image();
+    let download: HTMLImageElement = new Image();
     download.onload = function () {
         endTime = (new Date()).getTime();
         showResults();
@@ -38,15 +27,15 @@ let measureConnectionSpeed = () => {
     }
     
     startTime = (new Date()).getTime();
-    let cacheBuster = "?nnn=" + startTime;
+    let cacheBuster: string = "?anticache=" + startTime;
     download.src = imageAddr + cacheBuster;
     
     let showResults = () => {
-        let duration = (endTime - startTime) / 1000;
-        let bitsLoaded = downloadSize * 8;
-        let speedBps = (bitsLoaded / duration).toFixed(2);
-        let speedKbps = (speedBps / 1024).toFixed(2);
-        let speedMbps = (speedKbps / 1024).toFixed(2);
+        let duration: number = (endTime - startTime) / 1000;
+        let bitsLoaded: number = downloadSize * 8;
+        let speedBps: any = (bitsLoaded / duration).toFixed(2);
+        let speedKbps: any = (speedBps / 1024).toFixed(2);
+        let speedMbps: any = (speedKbps / 1024).toFixed(2);
         showProgressMessage([
             "Your connection speed is:",
             speedBps + " bps (bits per second)", 
