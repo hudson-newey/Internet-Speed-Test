@@ -22,7 +22,7 @@ var measureConnectionSpeed = function () {
         showProgressMessage("Error Running Speed Test, Please Try Again Later...");
     };
     startTime = (new Date()).getTime();
-    var cacheBuster = "?anticache=" + startTime;
+    var cacheBuster = "?noCache=" + startTime;
     download.src = imageAddr + cacheBuster;
     var showResults = function () {
         var duration = (endTime - startTime) / 1000;

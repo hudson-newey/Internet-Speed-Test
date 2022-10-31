@@ -1,7 +1,7 @@
 let imageAddr: string = "resources/1.jpg"; 
 let downloadSize: number = 19996613; //bytes
 
-let showProgressMessage = (msg) => {    
+let showProgressMessage = (msg: any) => {    
     let oProgress: HTMLElement | null = document.getElementById("progress");
     if (oProgress) {
         let actualHTML = (typeof msg == "string") ? msg : msg.join("<br />");
@@ -15,7 +15,7 @@ let startSpeedTest = () => {
 };
 
 let measureConnectionSpeed = () => {
-    let startTime, endTime;
+    let startTime: number, endTime: number;
     let download: HTMLImageElement = new Image();
     download.onload = function () {
         endTime = (new Date()).getTime();
@@ -27,7 +27,7 @@ let measureConnectionSpeed = () => {
     }
     
     startTime = (new Date()).getTime();
-    let cacheBuster: string = "?anticache=" + startTime;
+    let cacheBuster: string = "?noCache=" + startTime;
     download.src = imageAddr + cacheBuster;
     
     let showResults = () => {
